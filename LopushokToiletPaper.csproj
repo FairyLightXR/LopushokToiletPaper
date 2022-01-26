@@ -64,6 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI\Pages\ProductList.xaml.cs">
+      <DependentUpon>ProductList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Transition.cs" />
+    <Page Include="UI\Pages\ProductList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -172,10 +180,7 @@
     <Resource Include="UI\Logos\Лопушок.ico" />
     <Resource Include="UI\Logos\Лопушок.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Pages\" />
-    <Folder Include="Utilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="UI\products\paper_0.jpeg" />
     <Resource Include="UI\products\paper_1.jpeg" />
@@ -215,6 +220,7 @@
       <DependentUpon>LopushokModel.edmx</DependentUpon>
       <LastGenOutput>LopushokModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="UI\Plug\picture.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -12,11 +12,11 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
         </Grid.RowDefinitions>
-        <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="{StaticResource BasicBackground }"></Frame>
-        <Image Source="\UI\Logos\Лопушок.png" HorizontalAlignment="Left"></Image>
+        <Frame Grid.Row="1" x:Name="mainFrame" NavigationUIVisibility="Hidden" Background="{StaticResource BasicBackground }" ContentRendered="MainFrame_ContentRendered"></Frame>
+        <Image Source="\UI\Logos\Лопушок.png" HorizontalAlignment="Left" Stretch="Uniform"></Image>
         <WrapPanel Grid.Row="0" HorizontalAlignment="Center">
             <TextBlock FontSize="40" Text="Лопушок" FontWeight="DemiBold" FontStyle="Italic"></TextBlock>
         </WrapPanel>
-        <Button Grid.Row="0" HorizontalAlignment="Right" Content="Назад"></Button>
+        <Button Grid.Row="0" HorizontalAlignment="Right" Content="Назад" Visibility="Hidden" x:Name="BackBtn" Click="BackBtn_Click"></Button>
     </Grid>
 </Window>

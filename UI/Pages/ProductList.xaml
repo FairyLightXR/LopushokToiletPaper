@@ -1,0 +1,69 @@
+﻿<Page x:Class="LopushokToiletPaper.UI.Pages.ProductList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LopushokToiletPaper.UI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="ProductList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel VerticalAlignment="Center">
+            <StackPanel>
+                <TextBox Text="Введите для поиска" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="TxtBoxSrch" TextChanged="TxtBoxSrch_TextChanged" GotFocus="TxtBoxSrch_GotFocus" LostFocus="TxtBoxSrch_LostFocus" Height="40" Width="250"/>
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <ComboBox Grid.Column="1" Width="180" Height="30" HorizontalAlignment="Right" Margin="10" FontSize="16" x:Name="CmbBoxSort" SelectionChanged="CmbBoxSort_SelectionChanged">
+                <ComboBoxItem Content="Нет"></ComboBoxItem>
+                <ComboBoxItem Content="Наименование"></ComboBoxItem>
+                <ComboBoxItem Content="Стоимость"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox HorizontalAlignment="Right" Width="150" Margin="10" Grid.Column="2" FontSize="16" Name="CmbBoxFilt" SelectionChanged="CmbBoxFilt_SelectionChanged" DisplayMemberPath="Title"/>
+        </WrapPanel>
+        <ListView Grid.Row="1" Name="ProductLV" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.ColumnSpan="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseDoubleClick="ProductLV_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="400"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding banana}"
+                                                   Visibility="Collapsed" x:Name="ImagePath1"/>
+                        <TextBlock Text="{Binding Text, ElementName=ImagePath1, StringFormat=../{0}}"
+                                                   Visibility="Collapsed" x:Name="ImagePath2"/>
+                        <Border BorderBrush="Azure" BorderThickness="3" 
+                                                x:Name="BorderImage">
+                            <Image Source="{Binding Text, ElementName=ImagePath2}"
+                                               Height="150" Width="150" Stretch="Uniform" Margin="10"/>
+                        </Border>
+                        <!--<Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill" Margin="10" Grid.RowSpan="3">
+                            <Image.Source>
+                                <Binding Path="Product.Image" StringFormat=".//{0}" TargetNullValue="../UI/Plug/Picture.png">
+                                </Binding>
+                            </Image.Source>
+                        </Image>-->
+                        <TextBlock Text="{Binding ProductType.Title}" Grid.Column="1" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Text="{Binding Title}" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                        <TextBlock Text="{Binding ArticleNumber}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Text="{Binding Materials, StringFormat={} Материалы: {0}}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Text="{Binding Cost, StringFormat={}{0:N2} Руб.}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
